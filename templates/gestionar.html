@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gestionar Usuario</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../static/css/dashboard.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      language="JavaScript"
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/cerrarbarra.js') }}"
+    ></script>
+  </head>
+  <body class="back">
+    {% for message in get_flashed_messages() %}
+    <div>{{ message }}</div>
+    {% endfor %}
+    <div class="vertical-navbar bg-dark navbar-collapse" id="sidebar">
+      <div class="py-4 px-3 mb-4 bg-dark">
+        <div class="media d-flex align-items-center">
+          <img
+            src="../static/images/foto.jpg"
+            alt="..."
+            width="65"
+            class="mr-3 rounded-circle img-thumbnail shadow-sm"
+          />
+          <div class="media-body">
+             {% if g.user %}
+
+              <h4 class="m-2 texto">{% print(session.get("name_id")) %} </h4>
+              <p class="font-weight-light text-muted mb-2">{% print(session.get("rol_id")) %}</p>
+
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      
+      <ul class="nav flex-column mb-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/sessionsuperadmin">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('logout')}}">Cerrar Sesión</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="page-content p-5" id="content">
+      <!--Cerrar barra-->
+      <button id="sidebarCollapse" class="sadminbtn btn-d">
+        <img
+          src="../static/images/opciones.png"
+          style="width: 40px; height: 40px"
+        />
+      </button>
+      <br />
+      <br />
+      <div class="container-fluid">
+        <center>
+          <img src="../static/images/logo2.jpeg" class="img-resp" />
+        </center>
+      </div>
+      <br />
+      <div class="container-fluid">
+        <form action="{{url_for('fcnsearchuser')}}" method="POST">
+          <center>
+            <div class="row border">
+              <div class="row nav-busq"></div>
+
+              <div class="col-5">
+                <label for="ConsultarPor">Consultar Por</label>
+                <select
+                  name="consultarpor"
+                  id="consultarpor"
+                  class="form-select"
+                  aria-label="consultarpor"
+                  required
+                >
+                  <option value="1" selected>ID</option>
+                  <option value="2">Nombres</option>
+                  <option value="3">Apellidos</option>
+                  <option value="3">Cargo</option>
+                  <option value="3">Dependencia</option>
+                </select>
+              </div>
+              <div class="col-5">
+                <label for="CriterioB">Criterio de Búsqueda</label>
+                <input type="text" name="searchcriterio" />
+              </div>
+              <div class="col-1 d-flex align-items-center">
+                <button type="submit" class="w-200 btn btn-lg btn-primary">
+                  <img src="../static/images/buscar.png" class="iconbusq" />
+                </button>
+              </div>
+            </div>
+            <br /><br />
+            <div class="table1">
+              <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">Cargo</th>
+                    <th scope="col d-flex justify-content-center">
+                      Dependencia
+                    </th>
+                    <th scope="col">Ver</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for contact in data: %}
+                  <tr class="table-active">
+                    <td width="2">{{contact[0]}}</td>
+                    <td width="2">{{contact[1]}}</td>
+                    <td width="2">{{contact[2]}}</td>
+                    <td width="2">{{contact[3]}}</td>
+                    <td width="2">{{contact[4]}}</td>
+                    <td width="2">{{contact[5]}}</td>
+                    <td class="iconcont">
+                      <a href="/infouser/{{contact[0]}}"
+                        ><img
+                          class="menuicon"
+                          src="../static/images/search1jpeg"
+                      /></a>
+                    </td>
+                    <td class="iconcont">
+                      <a href="/edituser/{{contact[0]}}"
+                        ><img
+                          class="menuicon"
+                          src="../static/images/edit1.jpeg"
+                      /></a>
+                    </td>
+                    <td class="iconcont">
+                      <a href="/deleteuser/{{contact[0]}}"
+                        ><img
+                          class="menuicon"
+                          src="../static/images/delete1.jpeg"
+                      /></a>
+                    </td>
+                  </tr>
+
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </center>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

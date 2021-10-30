@@ -1,0 +1,241 @@
+.container {
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.body {
+  background-image: url(../images/background_3.jpg) repeat fixed 100%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.articulos {
+  background-image: url(/static/images/fondomadera.jpg);
+}
+
+.pestanas {
+  justify-content: flex-start;
+}
+
+.prof-pic {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.cards {
+  position: absolute;
+  right: 40px;
+  top: 128px;
+  width: 1230px;
+  height: 200px;
+}
+
+.cards2 {
+  position: absolute;
+  right: 40px;
+  top: 428px;
+  width: 1230px;
+  height: 200px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 180px;
+  height: 150px;
+  margin-bottom: 10px;
+  background-image: url(/static/images/fondomadera.jpg);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-title {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.card-text {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.img-dashboard {
+  position: absolute;
+  right: 40px;
+  top: 100px;
+  width: 1200px;
+  height: 620px;
+}
+
+.forma {
+  position: absolute;
+  right: 40px;
+  top: 128px;
+  width: 1230px;
+  height: 600px;
+}
+
+.sadminbtn {
+  color: black;
+}
+
+.form-gestionar {
+  position: absolute;
+  right: 50px;
+  top: 100px;
+  width: 1230px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: grey;
+}
+
+.svbtn {
+  position: absolute;
+  right: 40px;
+  bottom: 10px;
+  width: 1230px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.iconbusq {
+  width: 50px;
+  height: 50px;
+}
+
+
+.menuicon {
+  width: 20px;
+  height: 20px;
+}
+
+h1,
+h4 {
+  font-weight: 400;
+}
+
+h4 {
+  margin: 22px 0 4px;
+}
+
+h5 {
+  text-transform: uppercase;
+  color: #095484;
+}
+
+.main-block {
+  position: absolute;
+  right: 60px;
+  top: 100px;
+  width: 1200px;
+  height: 300px;
+}
+
+form {
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 2px 5px #ccc;
+  background: #fff;
+}
+
+input {
+  width: calc(100% - 10px);
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+}
+
+textarea {
+  width: calc(100% - 6px);
+  outline: none;
+}
+
+input:hover,
+textarea:hover {
+  outline: none;
+  border: 1px solid #095484;
+}
+
+th,
+td {
+  width: 15%;
+  padding: 15px 0;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  vertical-align: unset;
+  line-height: 18px;
+  font-weight: 400;
+  word-break: break-all;
+}
+
+.additional-question th,
+.additional-question td {
+  width: 38%;
+}
+
+.course-rate th,
+.course-rate td {
+  width: 19%;
+}
+
+.first-col,
+.additional-question .first-col,
+.course-rate .first-col {
+  width: 24%;
+  text-align: left;
+}
+
+.question,
+.comments {
+  margin: 15px 0 5px;
+}
+
+.question-answer label {
+  display: inline-block;
+  padding: 0 20px 15px 0;
+}
+
+.question-answer input {
+  width: auto;
+}
+
+.question-answer,
+table {
+  width: 100%;
+}
+
+.btn-block {
+  margin-top: 20px;
+  text-align: center;
+}
+
+button {
+  width: 150px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #095484;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0666a3;
+}
+
+@media (min-width: 568px) {
+  th,
+  td {
+    word-break: keep-all;
+  }
+}

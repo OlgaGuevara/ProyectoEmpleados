@@ -1,0 +1,117 @@
+/* Para computadoras */
+.vertical-navbar {
+  min-width: 17rem;
+  width: 17rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+}
+
+.texto {
+  color: white;
+}
+.btn-d {
+  width: 5%;
+}
+.back {
+  background: url(/static/images/dashbg.jpeg);
+
+  background-size: cover;
+
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.icono {
+  width: 15%;
+}
+.cards-rounded {
+  border-radius: 10px;
+  margin: 10px;
+  width: 80%;
+  margin-left: 13rem;
+}
+.cards-roundedu {
+  border-radius: 10px;
+  margin: 10px;
+  width: 80%;
+}
+
+.fila {
+  justify-content: center;
+}
+.img-resp {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 20%;
+  border-radius: 20px;
+}
+
+#sidebar.active {
+  margin-left: -17rem;
+}
+
+#content.active {
+  width: 100%;
+  margin: 0;
+}
+
+.text-mayuscula {
+  letter-spacing: 0.1em;
+}
+
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s;
+}
+button {
+  width: 100px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #095484;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0666a3;
+}
+
+/* celulares */
+@media screen and (max-width: 768px) {
+  .img-resp {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 60%;
+    border-radius: 10px;
+    margin-left: 2rem;
+  }
+  #sidebar {
+    margin-left: -17rem;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+  #content.active {
+    margin-left: 15rem;
+    width: calc(100% - 17rem);
+  }
+  .cards-rounded {
+    border-radius: 10px;
+    margin: 10px;
+    width: 80%;
+    margin-left: 2rem;
+  }
+}

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Editar Usuario</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../static/css/editarusuario.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      language="JavaScript"
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/cerrarbarra.js') }}"
+    ></script>
+  </head>
+
+  <body class="back">
+    {% for message in get_flashed_messages() %}
+    <div>{{ message }}</div>
+    {% endfor %}
+    <div class="vertical-navbar bg-dark navbar-collapse" id="sidebar">
+      <div class="py-4 px-3 mb-4 bg-dark">
+        <div class="media d-flex align-items-center">
+          <img
+            src="../static/images/foto.jpg"
+            alt="..."
+            width="65"
+            class="mr-3 rounded-circle img-thumbnail shadow-sm"
+          />
+          <div class="media-body">
+             {% if g.user %}
+
+              <h4 class="m-2 texto">{% print(session.get("name_id")) %} </h4>
+              <p class="font-weight-light text-muted mb-2">{% print(session.get("rol_id")) %}</p>
+
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      
+      <ul class="nav flex-column mb-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/sessionsuperadmin/">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('logout')}}">Cerrar Sesión</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="page-content p-5" id="content">
+      <!--Cerrar barra-->
+      <button id="sidebarCollapse" class="sadminbtn btn-d">
+        <img
+          src="../static/images/opciones.png"
+          style="width: 40px; height: 40px"
+        />
+      </button>
+      <br />
+      <br />
+      <center>
+        <h2>EDITAR USUARIO</h2>
+      </center>
+      <br />
+      <!--Formulario-->
+      <div
+        class="container"
+        style="background-color: white; border-radius: 10px"
+      >
+        <form action="/updateuser/{{data.0}}" method="POST">
+          <div class="row forma">
+            <div class="col-6">
+              <label for="nombres">Nombres</label>
+              <input
+                name="fname"
+                type="text"
+                class="form-control"
+                aria-label="nombres"
+                value="{{data.1}}"
+              />
+            </div>
+            <div class="col-6">
+              <label for="appelidos">Apellidos</label>
+              <input
+                name="lname"
+                type="text"
+                class="form-control"
+                aria-label="apellidos"
+                value="{{data.2}}"
+              />
+            </div>
+            <div class="col-6">
+              <label for="selecsexo">Seleccionar Sexo</label>
+              <select
+                name="sexo"
+                id="sexo"
+                class="form-select"
+                aria-label="sexousuario"
+              >
+                {% for sexo in sexos %} {% if sexo[1] != data[3] %}
+
+                <option value="{{sexo.0}}">{{sexo.1}}</option>
+
+                {% else %}
+
+                <option value="{{data.13}}" selected>{{data.3}}</option>
+
+                {% endif %} {% endfor %}
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="fnacimiento">Fecha de Nacimiento</label>
+              <input
+                name="fnacimiento"
+                type="date"
+                class="form-control"
+                aria-label="fechanac"
+                value="{{data.4}}"
+              />
+            </div>
+            <div class="col-6">
+              <label for="selecdependencia">Seleccionar Dependencia</label>
+              <select
+                name="dependencia"
+                id="dependencia"
+                class="form-select"
+                aria-label="dependenciausuario"
+              >
+                {% for dependencia in dependencias %} {% if dependencia[1] !=
+                data[5] %}
+
+                <option value="{{dependencia.0}}">{{dependencia.1}}</option>
+
+                {% else %}
+
+                <option value="{{data.14}}" selected>{{data.5}}</option>
+
+                {% endif %} {% endfor %}
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="seleccargo">Seleccionar Cargo</label>
+              <select
+                name="cargo"
+                id="cargo"
+                class="form-select"
+                aria-label="cargo"
+              >
+                {% for cargo in cargos %} {% if cargo[1] != data[6] %}
+
+                <option value="{{cargo.0}}">{{cargo.1}}</option>
+
+                {% else %}
+
+                <option value="{{data.15}}" selected>{{data.6}}</option>
+
+                {% endif %} {% endfor %}
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="Seleccontrato">Seleccionar Contrato</label>
+              <select
+                name="tcontrato"
+                id="tcontrato"
+                class="form-select"
+                aria-label="tcontrato"
+              >
+                {% for contrato in contratos %} {% if contrato[1] != data[7] %}
+
+                <option value="{{contrato.0}}">{{contrato.1}}</option>
+
+                {% else %}
+
+                <option value="{{data.16}}" selected>{{data.7}}</option>
+
+                {% endif %} {% endfor %}
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="fingreso">Fecha de Ingreso</label>
+              <input
+                name="fingreso"
+                type="date"
+                class="form-control"
+                aria-label="fechaing"
+                value="{{data.8}}"
+              />
+            </div>
+            <div class="col-6">
+              <label for="email">Correo</label>
+              <input
+                name="email"
+                type="email"
+                class="form-control"
+                aria-label="correo"
+                value="{{data.9}}"
+              />
+            </div>
+            <div class="col-6">
+              <label for="fterminacion">Fecha de Terminación</label>
+              <input
+                name="fterminacion"
+                type="date"
+                class="form-control"
+                aria-label="fechaterm"
+                value="{{data.10}}"
+              />
+            </div>
+            <div class="col-6">
+              <label for="salario">Salario</label>
+              <input
+                name="salario"
+                type="number"
+                class="form-control"
+                aria-label="salario"
+                value="{{data.11}}"
+              />
+            </div>
+            <div class="col-6">
+              <label for="Selecrol">Seleccionar Rol</label>
+              <select
+                name="rol"
+                id="rol"
+                class="form-select"
+                aria-label="rolusuario"
+                required
+              >
+                {% for rol in roles %} {% if rol[1] != data[12] %}
+
+                <option value="{{rol.0}}">{{rol.1}}</option>
+
+                {% else %}
+
+                <option value="{{data.17}}" selected>{{data.12}}</option>
+
+                {% endif %} {% endfor %}
+              </select>
+            </div>
+
+            <br /><br /><br />
+
+            <center>
+              <button class="" type="submit">Actualizar</button>
+            </center>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
