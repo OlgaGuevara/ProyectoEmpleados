@@ -38,16 +38,18 @@
             class="mr-3 rounded-circle img-thumbnail shadow-sm"
           />
           <div class="media-body">
-             {% if g.user %}
+            {% if g.user %}
 
-              <h4 class="m-2 texto">{% print(session.get("name_id")) %} </h4>
-              <p class="font-weight-light text-muted mb-2">{% print(session.get("rol_id")) %}</p>
+            <h4 class="m-2 texto">{% print(session.get("name_id")) %}</h4>
+            <p class="font-weight-light text-muted mb-2">
+              {% print(session.get("rol_id")) %}
+            </p>
 
             {% endif %}
           </div>
         </div>
       </div>
-      
+
       <ul class="nav flex-column mb-0">
         <li class="nav-item">
           <a class="nav-link" href="/sessionsuperadmin">Inicio</a>
@@ -92,8 +94,8 @@
                   <option value="1" selected>ID</option>
                   <option value="2">Nombres</option>
                   <option value="3">Apellidos</option>
-                  <option value="3">Cargo</option>
-                  <option value="3">Dependencia</option>
+                  <option value="4">Cargo</option>
+                  <option value="5">Dependencia</option>
                 </select>
               </div>
               <div class="col-5">
@@ -114,7 +116,7 @@
                     <th scope="col">ID</th>
                     <th scope="col">Nombres</th>
                     <th scope="col">Apellidos</th>
-                    <th scope="col">Edad</th>
+                    <th scope="col">Fecha de Nacimiento</th>
                     <th scope="col">Cargo</th>
                     <th scope="col d-flex justify-content-center">
                       Dependencia

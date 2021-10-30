@@ -13,6 +13,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="../static/css/dashboard.css" />
+    <link rel="stylesheet" href="../static/css/dash.css" />
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -38,13 +39,15 @@
           />
           <div class="media-body">
             {% if g.user %}
-              <h4 class="m-2 texto">{% print(session.get("name_id")) %}</h4>
-              <p class="font-weight-light text-muted mb-2">{% print(session.get("rol_id")) %}</p>
+            <h4 class="m-2 texto">{% print(session.get("name_id")) %}</h4>
+            <p class="font-weight-light text-muted mb-2">
+              {% print(session.get("rol_id")) %}
+            </p>
             {% endif %}
           </div>
         </div>
       </div>
-      
+
       <ul class="nav flex-column mb-0">
         <li class="nav-item">
           <a class="nav-link" href="/sessionsuperadmin">Inicio</a>
@@ -66,11 +69,94 @@
       </button>
       <br />
       <br />
-      <img
-        class="img-dashboard"
-        src="../static/images/dashb.jpeg"
-        style="width: 80%; border-radius: 20px"
-      />
+      <center>
+        <div class="container">
+          <div class="row" style="background-color: white; border-radius: 15px">
+            <div
+              class="col-md-4"
+              style="background-color: #714ed8; border-radius: 15px; width: 10%"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                viewBox="0 0 28 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18.2 9.08889C18.2 11.5373 16.3196 13.5222 14 13.5222C11.6804 13.5222 9.79999 11.5373 9.79999 9.08889C9.79999 6.64043 11.6804 4.65556 14 4.65556C16.3196 4.65556 18.2 6.64043 18.2 9.08889Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M25.2 12.0444C25.2 13.6768 23.9464 15 22.4 15C20.8536 15 19.6 13.6768 19.6 12.0444C19.6 10.4121 20.8536 9.08889 22.4 9.08889C23.9464 9.08889 25.2 10.4121 25.2 12.0444Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M19.6 22.3889C19.6 19.1243 17.0927 16.4778 14 16.4778C10.9072 16.4778 8.39999 19.1243 8.39999 22.3889V26.8222H19.6V22.3889Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M8.39999 12.0444C8.39999 13.6768 7.14639 15 5.59999 15C4.05359 15 2.79999 13.6768 2.79999 12.0444C2.79999 10.4121 4.05359 9.08889 5.59999 9.08889C7.14639 9.08889 8.39999 10.4121 8.39999 12.0444Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M22.4 26.8222V22.3889C22.4 20.8312 22.0195 19.3671 21.351 18.0949C21.6863 18.0039 22.0378 17.9556 22.4 17.9556C24.7197 17.9556 26.6 19.9404 26.6 22.3889V26.8222H22.4Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M6.64896 18.0949C5.98058 19.3671 5.59999 20.8312 5.59999 22.3889V26.8222H1.39999V22.3889C1.39999 19.9404 3.2804 17.9556 5.59999 17.9556C5.96219 17.9556 6.31367 18.0039 6.64896 18.0949Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <div
+              class="col-md-4"
+              style="
+                background-color: white;
+                align-items: center;
+                display: flex;
+                justify-content: right;
+              "
+            >
+              <div class="" style="">
+                <h2>Usuarios registrados en el sistema:</h2>
+              </div>
+            </div>
+            <div
+              class="col-md-4"
+              style="
+                #background-color: white;
+                justify-content: right;
+                display: flex;
+                align-items: center;
+              "
+            >
+              <div class="">
+                <h2>{{"prueba"}}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="active-row">
+                <td>Dom</td>
+                <td>6000</td>
+              </tr>
+              <tr class="active-row">
+                <td>Melissa</td>
+                <td>5150</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </center>
     </div>
     <!--main-->
   </body>
