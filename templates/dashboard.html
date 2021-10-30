@@ -131,28 +131,82 @@
               "
             >
               <div class="">
-                <h2>{{"prueba"}}</h2>
+                <h2>{{cantuser}}</h2>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div class="row" style="background-color: white; border-radius: 15px">
+            <div
+              class="col-md-4"
+              style="background-color: #4cb773; border-radius: 15px; width: 10%"
+            >
+              <svg
+                class="w-6 h-6 text-white fill-current"
+                viewBox="0 0 40 40"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM16.6667 28.3333L8.33337 20L10.6834 17.65L16.6667 23.6166L29.3167 10.9666L31.6667 13.3333L16.6667 28.3333Z"
+                ></path>
+              </svg>
+            </div>
+            <div
+              class="col-md-4"
+              style="
+                background-color: white;
+                align-items: center;
+                display: flex;
+                justify-content: right;
+              "
+            >
+              <div class="" style="">
+                <h2>Usuarios con calificación perfecta:</h2>
+              </div>
+            </div>
+            <div
+              class="col-md-4"
+              style="
+                #background-color: white;
+                justify-content: right;
+                display: flex;
+                align-items: center;
+              "
+            >
+              <div class="">
+                <h2>{{estrellas}}</h2>
               </div>
             </div>
           </div>
         </div>
+        <br />
+        <h2 style="">Usuarios</h2>
+        <br />
         <div class="container">
           <table class="styled-table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Points</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Cargo</th>
+                <th>Rol</th>
+                <th>Tipo de contrato</th>
+                <th>Correos</th>
+                <th>Salario</th>
               </tr>
             </thead>
             <tbody>
+              {% for contact in data: %}
               <tr class="active-row">
-                <td>Dom</td>
-                <td>6000</td>
+                <td>{{contact[0]}}</td>
+                <td>{{contact[1]}}</td>
+                <td>{{contact[2]}}</td>
+                <td>{{contact[3]}}</td>
+                <td>{{contact[4]}}</td>
+                <td>{{contact[5]}}</td>
+                <td>{{contact[6]}}</td>
               </tr>
-              <tr class="active-row">
-                <td>Melissa</td>
-                <td>5150</td>
-              </tr>
+              {% endfor%}
             </tbody>
           </table>
         </div>

@@ -5,6 +5,7 @@
   font-family: sans-serif;
   min-width: 400px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: #ffffff;
 }
 .styled-table thead tr {
   background-color: #009879;
@@ -31,4 +32,9 @@
 .styled-table tbody tr.active-row {
   font-weight: bold;
   color: #009879;
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
 }

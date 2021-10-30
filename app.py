@@ -71,11 +71,13 @@ def fcnlogin():
 
                     if data[5] == 1:
 
-                        resp = make_response(redirect(url_for("fcnsessionuser")))
+                        resp = make_response(
+                            redirect(url_for("fcnsessionuser")))
 
                     else:
 
-                        resp = make_response(redirect(url_for("fcnsessionsuperadmin")))
+                        resp = make_response(
+                            redirect(url_for("fcnsessionsuperadmin")))
 
                     resp.set_cookie("username", username)
                     return resp
@@ -260,7 +262,19 @@ def fcnadduser():
 
 @app.route("/dashboard/", methods=["GET", "POST"])
 def fcndashboard():
-    return render_template("dashboard.html")
+    db = get_db()
+    cur = db.cursor()
+    consulta = "SELECT COUNT(str_nombre_usuario) FROM tbl_usuario"
+    cur.execute(consulta)
+    cantuser = cur.fetchone()[0]
+    consulta2 = "SELECT COUNT(int_id_evaluacion) FROM tbl_evaluacion WHERE int_puntaje_evaluacion = 10"
+    cur.execute(consulta2)
+    estrellas = cur.fetchone()[0]
+    consulta3 = "SELECT e.str_nom_empleado, e.str_ape_empleado, tc.str_nom_tipo_cargo, tp.str_nom_tipo_perfil, co.str_nom_tipo_contrato, e.str_correo_empleado, e.dbl_salario_empleado FROM tbl_empleado e, tbl_tipo_cargo tc, tbl_tipo_perfil tp, tbl_tipo_contrato co, tbl_usuario u WHERE u.str_nombre_usuario = e.str_nombre_usuario AND u.int_cod_tipo_perfil = tp.int_cod_tipo_perfil AND e.int_cod_tipo_cargo = tc.int_cod_tipo_cargo AND e.int_cod_tipo_contrato = co.int_cod_tipo_contrato"
+    cur.execute(consulta3)
+    data = cur.fetchall()
+
+    return render_template("dashboard.html", cantuser=cantuser, estrellas = estrellas, data = data)
 
 
 @app.route("/registeruser/", methods=["GET", "POST"])
@@ -368,7 +382,8 @@ def fcnregisterevaluationuser():
             db = get_db()
             cur = db.cursor()
             consulta = "INSERT INTO tbl_evaluacion (date_fecha_evaluacion, int_id_empleado, str_comentario_evaluacion, int_puntaje_evaluacion) VALUES (?,?,?,?)"
-            cur.execute(consulta, [fechaevaluacion, Id, recomendaciones, puntaje])
+            cur.execute(consulta, [fechaevaluacion,
+                        Id, recomendaciones, puntaje])
             db.commit()
 
             flash("Evaluación Guardada Exitosamente")
@@ -609,7 +624,7 @@ def fcnupdateuser(id):
                 flash(error)
                 return redirect(url_for("fcnupdateuser"))
 
-            if not email:
+            if not utils.isEmailValid(email):
                 error = "Debes Ingresar El Email"
                 flash(error)
                 return redirect(url_for("fcnupdateuser"))
@@ -743,7 +758,8 @@ def load_logged_in_user():
         g.user = (
             get_db()
             .execute(
-                "SELECT * FROM tbl_usuario WHERE str_nombre_usuario = ?", (user_id,)
+                "SELECT * FROM tbl_usuario WHERE str_nombre_usuario = ?", (
+                    user_id,)
             )
             .fetchone()
         )
